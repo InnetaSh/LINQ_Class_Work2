@@ -253,6 +253,9 @@
 
 
 
+
+
+
 //Задача 5: Имеется коллекция фильмов, каждый из которых имеет название, год выхода и список актеров.
 //Найти все фильмы, в которых снялся определенный актер.
 
@@ -305,7 +308,7 @@
 //        }
 //        Console.WriteLine("-----------------------------");
 //    }
-    
+
 //}
 
 //class Film
@@ -313,7 +316,7 @@
 //    public string Title;
 //    public int YearOfPublishing;
 //    public List<string> ActorsName;
-    
+
 //    public Film(string title, int year)
 //    {
 //        Title = title;
@@ -323,11 +326,151 @@
 //}
 
 
+
+
+
+
 //Задача 6: Имеется коллекция продуктов, каждый из которых имеет название, категорию и цену. Найти среднюю цену продуктов для каждой категории.
+
+//List<Product> products = new List<Product>
+//        {
+//            new Product ("яблоко", 59.99m, "фрукт"),
+//            new Product ("груша", 49.99m,  "фрукт" ),
+//            new Product("персик", 119.99m,  "фрукт" ),
+//            new Product ("диван", 17999.99m,  "мебель"),
+//            new Product ("шкаф",  1499.99m, "мебель" ),
+//            new Product("нектарин", 119.99m,  "фрукт" ),
+//            new Product ("стул",  1499.99m, "мебель" ),
+//            new Product ("вишня", 20.99m, "фрукт")
+//        };
+
+
+//var ProductsList = products.GroupBy(x => x.Category)
+//    .Select(gr => new
+//    {
+//        Category = gr.Key,
+//        AveragePrice = gr.Average(x => x.Price)
+//    });
+
+//foreach (var pr in ProductsList)
+//{
+//    Console.WriteLine($"Category name - {pr.Category}, - {pr.AveragePrice} ");
+//}
+//internal class Product
+//{
+
+//    public string Name;
+//    public decimal Price;
+//    public string Category;
+//    public Product(string name, decimal price, string category)
+//    {
+//        Name = name;
+//        Price = price;
+//        Category = category;
+//    }
+//}
+
+
+
+
 
 //Задача 7: Имеется коллекция пользователей, каждый из которых имеет имя и список друзей. Найти всех пользователей, у которых больше 5 друзей.
 
+
+//using System.Security.Authentication.ExtendedProtection;
+
+//var Persons = new List<Person>
+//{
+//    new Person("Tom")
+//    {
+//        friends = new List<string>{"Bob","Sam","Anna","Alex","Polya","Maria","Dania"}
+//    },
+//    new Person("Ivan")
+//    {
+//        friends = new List<string>{"Polya","Maria","Dania"}
+//    },
+//    new Person("Den")
+//    {
+//        friends = new List<string>{"Alya","Alex","Polya","Maria","Dania","Nik"}
+//    },
+//    new Person("Bob")
+//    {
+//        friends = new List<string>{"Sam","Anna","Alex"}
+//    },
+//    };
+
+//var PersonsListNew = Persons.Where(x => x.friends.Count > 5).ToList();
+
+//foreach (var pers in PersonsListNew)
+//{
+//    Console.WriteLine($"Name - {pers.Name},\tfriends:");
+//    foreach (var fr in pers.friends)
+//    {
+//        Console.Write(fr + ", ");
+//    }
+//    Console.WriteLine();
+//    Console.WriteLine("-------------------------------------");
+//}
+
+//class Person
+//{
+//    public string Name;
+//    public List<string> friends;
+
+//    public Person(string name)
+//    {
+//        Name = name;
+//        friends = new List<string>();
+//    }
+//}
+
+
+
+
+
+
 //Задача 8: Имеется коллекция транзакций, каждая из которых имеет сумму и дату. Найти все транзакции за последний месяц и вычислить их общую сумму.
+
+
+using System.Transactions;
+
+var Transactions = new List<Transaction>
+{
+    new Transaction(52000,new DateTime(2024,07,11)),
+    new Transaction(210000,new DateTime(2024,04,21)),
+    new Transaction(60000,new DateTime(2024,07,01)),
+    new Transaction(10000,new DateTime(2024,06,07)),
+    new Transaction(120000,new DateTime(2024,07,14)),
+    new Transaction(110000,new DateTime(2024,07,01))
+};
+
+DateTime nowDate = DateTime.Today;
+
+DateTime lastMonthDate = nowDate.AddMonths(-1).Date.AddDays(nowDate.Day);
+
+
+var transactionsNow = Transactions.Where(t => t.Date >= lastMonthDate && t.Date <= nowDate).Sum(t => t.Amount);
+
+
+    Console.WriteLine($"totalAmount - {transactionsNow}");
+
+public class Transaction
+{
+    public double Amount;
+    public DateTime Date;
+
+    public Transaction(double sum, DateTime date)
+    {
+        Amount = sum;
+        Date = date;
+    }
+}
+
+
+
+
+
+
 
 //Задача 9: Имеется коллекция студентов, каждый из которых имеет имя и список курсов. Найти всех студентов, которые записаны на курс "Математика".
 
