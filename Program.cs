@@ -432,39 +432,39 @@
 //Задача 8: Имеется коллекция транзакций, каждая из которых имеет сумму и дату. Найти все транзакции за последний месяц и вычислить их общую сумму.
 
 
-using System.Transactions;
+//using System.Transactions;
 
-var Transactions = new List<Transaction>
-{
-    new Transaction(52000,new DateTime(2024,07,11)),
-    new Transaction(210000,new DateTime(2024,04,21)),
-    new Transaction(60000,new DateTime(2024,07,01)),
-    new Transaction(10000,new DateTime(2024,06,07)),
-    new Transaction(120000,new DateTime(2024,07,14)),
-    new Transaction(110000,new DateTime(2024,07,01))
-};
+//var Transactions = new List<Transaction>
+//{
+//    new Transaction(52000,new DateTime(2024,07,11)),
+//    new Transaction(210000,new DateTime(2024,04,21)),
+//    new Transaction(60000,new DateTime(2024,07,01)),
+//    new Transaction(10000,new DateTime(2024,06,07)),
+//    new Transaction(120000,new DateTime(2024,07,14)),
+//    new Transaction(110000,new DateTime(2024,07,01))
+//};
 
-DateTime nowDate = DateTime.Today;
+//DateTime nowDate = DateTime.Today;
 
-DateTime lastMonthDate = nowDate.AddMonths(-1).Date.AddDays(nowDate.Day);
-
-
-var transactionsNow = Transactions.Where(t => t.Date >= lastMonthDate && t.Date <= nowDate).Sum(t => t.Amount);
+//DateTime lastMonthDate = nowDate.AddMonths(-1).Date.AddDays(nowDate.Day);
 
 
-    Console.WriteLine($"totalAmount - {transactionsNow}");
+//var transactionsNow = Transactions.Where(t => t.Date >= lastMonthDate && t.Date <= nowDate).Sum(t => t.Amount);
 
-public class Transaction
-{
-    public double Amount;
-    public DateTime Date;
 
-    public Transaction(double sum, DateTime date)
-    {
-        Amount = sum;
-        Date = date;
-    }
-}
+//    Console.WriteLine($"totalAmount - {transactionsNow}");
+
+//public class Transaction
+//{
+//    public double Amount;
+//    public DateTime Date;
+
+//    public Transaction(double sum, DateTime date)
+//    {
+//        Amount = sum;
+//        Date = date;
+//    }
+//}
 
 
 
@@ -474,13 +474,241 @@ public class Transaction
 
 //Задача 9: Имеется коллекция студентов, каждый из которых имеет имя и список курсов. Найти всех студентов, которые записаны на курс "Математика".
 
+
+//var Students = new List<Student>
+//{
+//    new Student("Tom")
+//    {
+//        courses = new List<string>{"математика","укр.яз.","англ.яз.","физика","химия","биология","география"}
+//    },
+//    new Student("Ivan")
+//    {
+//        courses = new List<string>{ "англ.яз.", "химия", "математика" }
+//    },
+//    new Student("Den")
+//    {
+//        courses = new List<string>{ "география", "химия", "физика", "англ.яз.", "биология"}
+//    },
+//    new Student("Bob")
+//    {
+//        courses = new List<string>{ "англ.яз.", "Математика", "физика" }
+//    },
+//};
+
+//var StudentsListNew = Students.Where(x => x.courses.Any(s=>s.ToLower() == "математика")).ToList();
+
+//foreach (var stud in StudentsListNew)
+//{
+//    Console.WriteLine($"Name - {stud.Name},\tcourses:");
+//    foreach (var fr in stud.courses)
+//    {
+//        Console.Write(fr + ", ");
+//    }
+//    Console.WriteLine();
+//    Console.WriteLine("-------------------------------------");
+//}
+
+//class Student
+//{
+//    public string Name;
+//    public List<string> courses;
+
+//    public Student(string name)
+//    {
+//        Name = name;
+//        courses = new List<string>();
+//    }
+//}
+
+
+
+
+
+
+
 //Задача 10: Имеется коллекция сотрудников, каждый из которых имеет имя, отдел и список проектов. Найти все отделы и количество сотрудников в каждом отделе.
+
+
+//var EmployeesList = new List<Employee>
+//{
+//    new Employee("Tom","Отдел продаж")
+//    {
+//        projects = new List<string>{ "Проект 1", "Проект 2", "Проект 3" }
+//    },
+//    new Employee("Sam", "Отдел маркетинга")
+//    {
+//        projects = new List<string>{ "Проект 1", "Проект 2", "Проект 3", "Проект 4", "Проект 5", }
+//    },
+//    new Employee("Bob", "Отдел маркетинга")
+//    {
+//        projects = new List<string>{ "Проект 1", "Проект 2", "Проект 3", "Проект 4" }
+//    },
+//    new Employee("Jon", "Отдел продаж")
+//    {
+//        projects = new List<string>{ "Проект 1", "Проект 2"}
+//    },
+//    new Employee("Alex", "Отдел продаж")
+//    {
+//        projects = new List<string>{ "Проект 1" }
+//    },
+
+//};
+
+//var EmployeesListNew = EmployeesList.GroupBy(x => x.Department)
+//    .Select(gr => new
+//    {
+//        Department = gr.Key,
+//        EmployeesCount = gr.Count()
+//    });
+
+
+//foreach (var emp in EmployeesListNew)
+//{
+//    Console.WriteLine($"Department - {emp.Department},  EmployeesCount - {emp.EmployeesCount} ");
+//}
+
+//class Employee
+//{
+//    public string Name;
+//    public string Department;
+//    public List<string> projects;
+
+//    public Employee(string name, string department)
+//    {
+//        Name = name;
+//        Department = department;
+//        projects = new List<string>();
+//    }
+//}
+
+
+
+
+
+
+
+
+
 
 //Задача 11: Имеется коллекция книг, каждая из которых имеет название, автора и год издания. Найти автора, у которого наибольшее количество книг.
 
+//List<Book> books = new List<Book>
+//{
+//    new Book("песнь льда и пламени.Игра престолов.", "Джордж Мартин", 1996),
+//    new Book("песнь льда и пламени.Танец с драконами.", "Джордж Мартин", 2011),
+//    new Book("Ведьмак.Последнее желание.", "Анджей Сапковский", 1968),
+//    new Book("песнь льда и пламени.Пир стервятников.", "Джордж Мартин", 2005),
+//    new Book("песнь льда и пламени.Буря мечей.", "Джордж Мартин", 2000),
+//     new Book("Ведьмак.Сезон гроз.", "Анджей Сапковский", 2013),
+//};
+
+//var booksList = books
+//    .GroupBy(b => b.Author) 
+//    .Select(g => new 
+//    { 
+//        Author = g.Key, 
+//        BookCount = g.Count() 
+//    })  
+//    .OrderByDescending(x => x.BookCount)  
+//    .FirstOrDefault();
+
+
+//if (booksList != null)
+//{
+//    Console.WriteLine($"Author: {booksList.Author}, bookCount: {booksList.BookCount}");
+//}
+//else
+//{
+//    Console.WriteLine("error");
+//}
+
+//public class Book
+//{
+//    public string Title { get; set; } //название ресурса.
+//    public string Author { get; set; } //автор ресурса.
+//    public int YearOfPublishing { get; set; } // год издания.
+
+//    public Book(string title, string author, int year)
+//    {
+//        Title = title;
+//        Author = author;
+//        YearOfPublishing = year;
+//    }
+
+//    public void GetInfo()
+//    {
+//        Console.WriteLine($"Книга \'{Title}\', автор - {Author}, год издания. - {YearOfPublishing}");
+//        ;
+//    }
+//}
+
+
+
+
+
+
+
 //Задача 12: Имеется коллекция пользователей, каждый из которых имеет имя, возраст и список хобби. Найти всех пользователей, у которых есть хобби "футбол".
 
+
+
+
+
+
+
+
+
+
 //Задача 13: Имеется коллекция продуктов, каждый из которых имеет название, категорию и цену. Найти 3 самых дорогих продукта в каждой категории.
+
+
+List<Product> products = new List<Product>
+        {
+            new Product ("яблоко", 59.99m, "фрукт"),
+            new Product ("груша", 49.99m,  "фрукт" ),
+            new Product("персик", 119.99m,  "фрукт" ),
+            new Product ("диван", 17999.99m,  "мебель"),
+            new Product ("шкаф",  1499.99m, "мебель" ),
+            new Product("нектарин", 119.99m,  "фрукт" ),
+            new Product ("стул",  1499.99m, "мебель" ),
+            new Product ("вишня", 20.99m, "фрукт")
+        };
+
+
+var ProductsList = products
+    .GroupBy(p => p.Category) 
+    .SelectMany(group =>
+        group.OrderByDescending(p => p.Price).Take(3))
+    .OrderBy(p => p.Category);
+
+
+
+foreach (var product in ProductsList)
+{
+    Console.WriteLine($"Category: {product.Category}, Name: {product.Name}, Price: {product.Price}");
+}
+
+internal class Product
+{
+
+    public string Name;
+    public decimal Price;
+    public string Category;
+    public Product(string name, decimal price, string category)
+    {
+        Name = name;
+        Price = price;
+        Category = category;
+    }
+}
+
+
+
+
+
+
+
+
 
 //Задача 14: Имеется коллекция заказов, каждый из которых содержит дату заказа и список товаров. Найти месяц, в котором было сделано больше всего заказов.
 
