@@ -662,45 +662,45 @@
 //Задача 13: Имеется коллекция продуктов, каждый из которых имеет название, категорию и цену. Найти 3 самых дорогих продукта в каждой категории.
 
 
-List<Product> products = new List<Product>
-        {
-            new Product ("яблоко", 59.99m, "фрукт"),
-            new Product ("груша", 49.99m,  "фрукт" ),
-            new Product("персик", 119.99m,  "фрукт" ),
-            new Product ("диван", 17999.99m,  "мебель"),
-            new Product ("шкаф",  1499.99m, "мебель" ),
-            new Product("нектарин", 119.99m,  "фрукт" ),
-            new Product ("стул",  1499.99m, "мебель" ),
-            new Product ("вишня", 20.99m, "фрукт")
-        };
+//List<Product> products = new List<Product>
+//        {
+//            new Product ("яблоко", 59.99m, "фрукт"),
+//            new Product ("груша", 49.99m,  "фрукт" ),
+//            new Product("персик", 119.99m,  "фрукт" ),
+//            new Product ("диван", 17999.99m,  "мебель"),
+//            new Product ("шкаф",  1499.99m, "мебель" ),
+//            new Product("нектарин", 119.99m,  "фрукт" ),
+//            new Product ("стул",  1499.99m, "мебель" ),
+//            new Product ("вишня", 20.99m, "фрукт")
+//        };
 
 
-var ProductsList = products
-    .GroupBy(p => p.Category) 
-    .SelectMany(group =>
-        group.OrderByDescending(p => p.Price).Take(3))
-    .OrderBy(p => p.Category);
+//var ProductsList = products
+//    .GroupBy(p => p.Category) 
+//    .SelectMany(group =>
+//        group.OrderByDescending(p => p.Price).Take(3))
+//    .OrderBy(p => p.Category);
 
 
 
-foreach (var product in ProductsList)
-{
-    Console.WriteLine($"Category: {product.Category}, Name: {product.Name}, Price: {product.Price}");
-}
+//foreach (var product in ProductsList)
+//{
+//    Console.WriteLine($"Category: {product.Category}, Name: {product.Name}, Price: {product.Price}");
+//}
 
-internal class Product
-{
+//internal class Product
+//{
 
-    public string Name;
-    public decimal Price;
-    public string Category;
-    public Product(string name, decimal price, string category)
-    {
-        Name = name;
-        Price = price;
-        Category = category;
-    }
-}
+//    public string Name;
+//    public decimal Price;
+//    public string Category;
+//    public Product(string name, decimal price, string category)
+//    {
+//        Name = name;
+//        Price = price;
+//        Category = category;
+//    }
+//}
 
 
 
@@ -711,6 +711,61 @@ internal class Product
 
 
 //Задача 14: Имеется коллекция заказов, каждый из которых содержит дату заказа и список товаров. Найти месяц, в котором было сделано больше всего заказов.
+
+var OrdersList = new List<Order>
+{
+    new Order(new DateTime(2024, 07, 15))
+    {
+        products = new List<string>{"Iphone15","Acum", "Invertor" }
+    },
+    new Order(new DateTime(2024,06,10))
+    {
+        products = new List<string>{"TP-LINK ","компьютер","телефон Sumsung","телефон Iphon","клавиатура","наушники"}
+    },
+    new Order(new DateTime(2024,06,21))
+    {
+        products = new List<string>{"MacBook","TP-LINK "}
+    },
+     new Order(new DateTime(2024,07,10))
+    {
+        products = new List<string>{"desk lamp "}
+    }
+};
+
+
+var OrdersListNew = OrdersList
+    .GroupBy(p => p.OrderDate.Month)
+    .Select(g => new
+    {
+        Month = g.Key,
+        OrderCount = g.Sum(p => p.products.Count)
+    })
+    .OrderByDescending(g => g.OrderCount)
+    .FirstOrDefault();
+
+
+  Console.WriteLine($"Month - {OrdersListNew.Month}, OrderCount - {OrdersListNew.OrderCount}");
+
+class Order
+{
+    public DateTime OrderDate;
+    public List<string> products;
+
+    public Order(DateTime orderDate)
+    {
+        products = new List<string>();
+        OrderDate = orderDate;
+    }
+   
+}
+
+
+
+
+
+
+
+
 
 //Задача 15: Имеется коллекция фильмов, каждый из которых имеет название, год выхода и список актеров. Найти актера, который снялся в наибольшем количестве фильмов.
 
