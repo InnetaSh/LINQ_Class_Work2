@@ -712,52 +712,52 @@
 
 //Задача 14: Имеется коллекция заказов, каждый из которых содержит дату заказа и список товаров. Найти месяц, в котором было сделано больше всего заказов.
 
-var OrdersList = new List<Order>
-{
-    new Order(new DateTime(2024, 07, 15))
-    {
-        products = new List<string>{"Iphone15","Acum", "Invertor" }
-    },
-    new Order(new DateTime(2024,06,10))
-    {
-        products = new List<string>{"TP-LINK ","компьютер","телефон Sumsung","телефон Iphon","клавиатура","наушники"}
-    },
-    new Order(new DateTime(2024,06,21))
-    {
-        products = new List<string>{"MacBook","TP-LINK "}
-    },
-     new Order(new DateTime(2024,07,10))
-    {
-        products = new List<string>{"desk lamp "}
-    }
-};
+//var OrdersList = new List<Order>
+//{
+//    new Order(new DateTime(2024, 07, 15))
+//    {
+//        products = new List<string>{"Iphone15","Acum", "Invertor" }
+//    },
+//    new Order(new DateTime(2024,06,10))
+//    {
+//        products = new List<string>{"TP-LINK ","компьютер","телефон Sumsung","телефон Iphon","клавиатура","наушники"}
+//    },
+//    new Order(new DateTime(2024,06,21))
+//    {
+//        products = new List<string>{"MacBook","TP-LINK "}
+//    },
+//     new Order(new DateTime(2024,07,10))
+//    {
+//        products = new List<string>{"desk lamp "}
+//    }
+//};
 
 
-var OrdersListNew = OrdersList
-    .GroupBy(p => p.OrderDate.Month)
-    .Select(g => new
-    {
-        Month = g.Key,
-        OrderCount = g.Sum(p => p.products.Count)
-    })
-    .OrderByDescending(g => g.OrderCount)
-    .FirstOrDefault();
+//var OrdersListNew = OrdersList
+//    .GroupBy(p => p.OrderDate.Month)
+//    .Select(g => new
+//    {
+//        Month = g.Key,
+//        OrderCount = g.Sum(p => p.products.Count)
+//    })
+//    .OrderByDescending(g => g.OrderCount)
+//    .FirstOrDefault();
 
 
-  Console.WriteLine($"Month - {OrdersListNew.Month}, OrderCount - {OrdersListNew.OrderCount}");
+//  Console.WriteLine($"Month - {OrdersListNew.Month}, OrderCount - {OrdersListNew.OrderCount}");
 
-class Order
-{
-    public DateTime OrderDate;
-    public List<string> products;
+//class Order
+//{
+//    public DateTime OrderDate;
+//    public List<string> products;
 
-    public Order(DateTime orderDate)
-    {
-        products = new List<string>();
-        OrderDate = orderDate;
-    }
-   
-}
+//    public Order(DateTime orderDate)
+//    {
+//        products = new List<string>();
+//        OrderDate = orderDate;
+//    }
+
+//}
 
 
 
@@ -768,6 +768,66 @@ class Order
 
 
 //Задача 15: Имеется коллекция фильмов, каждый из которых имеет название, год выхода и список актеров. Найти актера, который снялся в наибольшем количестве фильмов.
+
+var FilmsList = new List<Film>
+{
+    new Film("Малефисента",2014)
+    {
+        ActorsName = new List<string>{ "Анджелина Джоли", "Эль Фэннинг", "Ханна Нью" , "Сэм Райли" }
+    },
+      new Film("007: Координаты \'Скайфолл\'",2012)
+    {
+        ActorsName = new List<string>{ "Дэниел Крейг", "Хавьер Бардем", "Джуди Денч" }
+      },
+    new Film("Мистер и миссис Смит",2005)
+    {
+        ActorsName = new List<string>{"Брэд Питт","Анджелина Джоли","Винс Вон" }
+    },
+     new Film("Лара Крофт: Расхитительница гробниц",2001)
+    {
+        ActorsName = new List<string>{ "Анджелина Джоли", "Джон Войт", "Дэниел Крейг" }
+     }
+
+};
+
+
+
+
+var FilmsListNew = FilmsList
+    .SelectMany(f => f.ActorsName)
+    .GroupBy(actor => actor)
+    .Select(group => new 
+    {
+        Actor = group.Key,
+        FilmCount = group.Count() 
+    })
+    .OrderByDescending(x => x.FilmCount)
+    .FirstOrDefault();
+
+Console.WriteLine($"Actor - {FilmsListNew.Actor}, FilmCount- {FilmsListNew.FilmCount}");
+
+class Film
+{
+    public string Title;
+    public int YearOfPublishing;
+    public List<string> ActorsName;
+
+    public Film(string title, int year)
+    {
+        Title = title;
+        YearOfPublishing = year;
+        ActorsName = new List<string>();
+    }
+}
+
+
+
+
+
+
+
+
+
 
 //Задача 16: Имеется коллекция студентов, каждый из которых имеет имя и список оценок. Найти студента с наибольшим средним баллом.
 
