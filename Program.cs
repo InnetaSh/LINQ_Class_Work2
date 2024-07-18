@@ -18,22 +18,22 @@
 //}
 
 //public class Book
-//{ 
-//    public string Title { get;  set; } //название ресурса.
-//    public string Author { get;  set; } //автор ресурса.
-//    public int YearOfPublishing { get;  set; } // год издания.
+//{
+//    public string Title { get; set; } //название ресурса.
+//    public string Author { get; set; } //автор ресурса.
+//    public int YearOfPublishing { get; set; } // год издания.
 
-//    public Book(string title, string author, int year) 
+//    public Book(string title, string author, int year)
 //    {
-//    Title = title;
-//    Author = author;
-//    YearOfPublishing = year;
+//        Title = title;
+//        Author = author;
+//        YearOfPublishing = year;
 //    }
 
 //    public void GetInfo()
 //    {
-//        Console.WriteLine($"Книга \'{Title}\', автор - {Author}, год издания. - {YearOfPublishing}");
-//         ;
+//        Console.WriteLine($"Книга \'{Title + "\'",-44} автор - {Author + ",",-20} год издания. - {YearOfPublishing}");
+//        ;
 //    }
 //}
 
@@ -86,9 +86,9 @@
 //{
 //    int sum = 0;
 //    foreach (var gr in student.Grades)
-//        {
-//            sum += gr;
-//        }
+//    {
+//        sum += gr;
+//    }
 
 //    return sum;
 //}
@@ -161,7 +161,7 @@
 //    }
 //};
 
-//var OrdersListNew = OrdersList.Where(x =>x.products.Any(order => order.Price > 1000)).ToList();
+//var OrdersListNew = OrdersList.Where(x => x.products.Any(order => order.Price > 1000)).ToList();
 
 //foreach (var o in OrdersListNew)
 //{
@@ -171,7 +171,7 @@
 //class Order
 //{
 //    public DateTime OrderDate;
-//    public  List<Product> products;
+//    public List<Product> products;
 
 //    public Order(DateTime orderDate)
 //    {
@@ -195,15 +195,15 @@
 //    public string Name;
 //    public double Price;
 
-//    public Product(string name, double price) 
-//    { 
+//    public Product(string name, double price)
+//    {
 //        Name = name;
 //        Price = price;
 //    }
 //    public void PrintInfoProduct()
 //    {
 
-//        Console.WriteLine($"Order name - {Name}, Price - {Price}");
+//        Console.WriteLine($"Order name - {Name + ",",-12} Price - {Price}");
 
 //    }
 //}
@@ -226,14 +226,14 @@
 
 //var EmployeesListNew = EmployeesList.GroupBy(x => x.JobTitle)
 //    .Select(gr => new
-//{
+//    {
 //        JobTitle = gr.Key,
 //        AverageSalary = gr.Average(x => x.Salary)
-//});
+//    });
 
 //foreach (var emp in EmployeesListNew)
 //{
-//    Console.WriteLine($"JobTitle - {emp.JobTitle},AverageSalary - {emp.AverageSalary} ");
+//    Console.WriteLine($"JobTitle - {emp.JobTitle + ":",-12} AverageSalary - {emp.AverageSalary} ");
 //}
 
 //class Employee
@@ -354,7 +354,7 @@
 
 //foreach (var pr in ProductsList)
 //{
-//    Console.WriteLine($"Category name - {pr.Category}, - {pr.AveragePrice} ");
+//    Console.WriteLine($"Category name - {pr.Category + ":",-12} - {pr.AveragePrice} ");
 //}
 //internal class Product
 //{
@@ -452,7 +452,7 @@
 //var transactionsNow = Transactions.Where(t => t.Date >= lastMonthDate && t.Date <= nowDate).Sum(t => t.Amount);
 
 
-//    Console.WriteLine($"totalAmount - {transactionsNow}");
+//Console.WriteLine($"totalAmount - {transactionsNow}");
 
 //public class Transaction
 //{
@@ -495,7 +495,7 @@
 //    },
 //};
 
-//var StudentsListNew = Students.Where(x => x.courses.Any(s=>s.ToLower() == "математика")).ToList();
+//var StudentsListNew = Students.Where(x => x.courses.Any(s => s.ToLower() == "математика")).ToList();
 
 //foreach (var stud in StudentsListNew)
 //{
@@ -564,7 +564,7 @@
 
 //foreach (var emp in EmployeesListNew)
 //{
-//    Console.WriteLine($"Department - {emp.Department},  EmployeesCount - {emp.EmployeesCount} ");
+//    Console.WriteLine($"Department - {emp.Department + ":",-20}  EmployeesCount - {emp.EmployeesCount} ");
 //}
 
 //class Employee
@@ -603,13 +603,13 @@
 //};
 
 //var booksList = books
-//    .GroupBy(b => b.Author) 
-//    .Select(g => new 
-//    { 
-//        Author = g.Key, 
-//        BookCount = g.Count() 
-//    })  
-//    .OrderByDescending(x => x.BookCount)  
+//    .GroupBy(b => b.Author)
+//    .Select(g => new
+//    {
+//        Author = g.Key,
+//        BookCount = g.Count()
+//    })
+//    .OrderByDescending(x => x.BookCount)
 //    .FirstOrDefault();
 
 
@@ -652,6 +652,50 @@
 
 
 
+//var Persons = new List<Person>
+//{
+//    new Person("Tom")
+//    {
+//        hobby = new List<string>{ "футбол", "волейбол","гитара"}
+//    },
+//    new Person("Ivan")
+//    {
+//        hobby = new List<string>{ "футбол", "плавание", "бокс" }
+//    },
+//    new Person("Den")
+//    {
+//        hobby = new List<string>{"рисование","баскетбол", "плавание" }
+//    },
+//    new Person("Bob")
+//    {
+//        hobby = new List<string>{ "волейбол", "баскетбол"}
+//    },
+//    };
+
+//var PersonsListNew = Persons.Where(x => x.hobby.Any(s => s.ToLower() == "футбол")).ToList();
+
+//foreach (var pers in PersonsListNew)
+//{
+//    Console.WriteLine($"Name - {pers.Name},\tfriends:");
+//    foreach (var fr in pers.hobby)
+//    {
+//        Console.Write(fr + ", ");
+//    }
+//    Console.WriteLine();
+//    Console.WriteLine("-------------------------------------");
+//}
+
+//class Person
+//{
+//    public string Name;
+//    public List<string> hobby;
+
+//    public Person(string name)
+//    {
+//        Name = name;
+//        hobby = new List<string>();
+//    }
+//}
 
 
 
@@ -676,7 +720,7 @@
 
 
 //var ProductsList = products
-//    .GroupBy(p => p.Category) 
+//    .GroupBy(p => p.Category)
 //    .SelectMany(group =>
 //        group.OrderByDescending(p => p.Price).Take(3))
 //    .OrderBy(p => p.Category);
@@ -685,7 +729,7 @@
 
 //foreach (var product in ProductsList)
 //{
-//    Console.WriteLine($"Category: {product.Category}, Name: {product.Name}, Price: {product.Price}");
+//    Console.WriteLine($"Category: {product.Category +":", -12} {product.Name + ":",-10}  {product.Price}");
 //}
 
 //internal class Product
@@ -744,7 +788,7 @@
 //    .FirstOrDefault();
 
 
-//  Console.WriteLine($"Month - {OrdersListNew.Month}, OrderCount - {OrdersListNew.OrderCount}");
+//Console.WriteLine($"Month - {OrdersListNew.Month}, OrderCount - {OrdersListNew.OrderCount}");
 
 //class Order
 //{
@@ -769,56 +813,56 @@
 
 //Задача 15: Имеется коллекция фильмов, каждый из которых имеет название, год выхода и список актеров. Найти актера, который снялся в наибольшем количестве фильмов.
 
-var FilmsList = new List<Film>
-{
-    new Film("Малефисента",2014)
-    {
-        ActorsName = new List<string>{ "Анджелина Джоли", "Эль Фэннинг", "Ханна Нью" , "Сэм Райли" }
-    },
-      new Film("007: Координаты \'Скайфолл\'",2012)
-    {
-        ActorsName = new List<string>{ "Дэниел Крейг", "Хавьер Бардем", "Джуди Денч" }
-      },
-    new Film("Мистер и миссис Смит",2005)
-    {
-        ActorsName = new List<string>{"Брэд Питт","Анджелина Джоли","Винс Вон" }
-    },
-     new Film("Лара Крофт: Расхитительница гробниц",2001)
-    {
-        ActorsName = new List<string>{ "Анджелина Джоли", "Джон Войт", "Дэниел Крейг" }
-     }
+//var FilmsList = new List<Film>
+//{
+//    new Film("Малефисента",2014)
+//    {
+//        ActorsName = new List<string>{ "Анджелина Джоли", "Эль Фэннинг", "Ханна Нью" , "Сэм Райли" }
+//    },
+//      new Film("007: Координаты \'Скайфолл\'",2012)
+//    {
+//        ActorsName = new List<string>{ "Дэниел Крейг", "Хавьер Бардем", "Джуди Денч" }
+//      },
+//    new Film("Мистер и миссис Смит",2005)
+//    {
+//        ActorsName = new List<string>{"Брэд Питт","Анджелина Джоли","Винс Вон" }
+//    },
+//     new Film("Лара Крофт: Расхитительница гробниц",2001)
+//    {
+//        ActorsName = new List<string>{ "Анджелина Джоли", "Джон Войт", "Дэниел Крейг" }
+//     }
 
-};
-
-
+//};
 
 
-var FilmsListNew = FilmsList
-    .SelectMany(f => f.ActorsName)
-    .GroupBy(actor => actor)
-    .Select(group => new 
-    {
-        Actor = group.Key,
-        FilmCount = group.Count() 
-    })
-    .OrderByDescending(x => x.FilmCount)
-    .FirstOrDefault();
 
-Console.WriteLine($"Actor - {FilmsListNew.Actor}, FilmCount- {FilmsListNew.FilmCount}");
 
-class Film
-{
-    public string Title;
-    public int YearOfPublishing;
-    public List<string> ActorsName;
+//var FilmsListNew = FilmsList
+//    .SelectMany(f => f.ActorsName)
+//    .GroupBy(actor => actor)
+//    .Select(group => new
+//    {
+//        Actor = group.Key,
+//        FilmCount = group.Count()
+//    })
+//    .OrderByDescending(x => x.FilmCount)
+//    .FirstOrDefault();
 
-    public Film(string title, int year)
-    {
-        Title = title;
-        YearOfPublishing = year;
-        ActorsName = new List<string>();
-    }
-}
+//Console.WriteLine($"Actor - {FilmsListNew.Actor}, FilmCount- {FilmsListNew.FilmCount}");
+
+//class Film
+//{
+//    public string Title;
+//    public int YearOfPublishing;
+//    public List<string> ActorsName;
+
+//    public Film(string title, int year)
+//    {
+//        Title = title;
+//        YearOfPublishing = year;
+//        ActorsName = new List<string>();
+//    }
+//}
 
 
 
@@ -831,10 +875,249 @@ class Film
 
 //Задача 16: Имеется коллекция студентов, каждый из которых имеет имя и список оценок. Найти студента с наибольшим средним баллом.
 
+//var Students = new List<Student>
+//{
+//    new Student("Tom")
+//    {
+//        grades = new List<int>{11,9,10,10,9,8,12,8,11}
+//    },
+//    new Student("Ivan")
+//    {
+//        grades = new List<int>{ 9,8,6,12,8,6,7 }
+//    },
+//    new Student("Den")
+//    {
+//        grades = new List<int>{ 10,10,10,9,9,12,11,10,8,10,8}
+//    },
+//    new Student("Bob")
+//    {
+//        grades = new List<int>{ 12,11,10,12,11,10,10,12}
+//    },
+//};
+
+//var StudentsListNew = Students.OrderByDescending(x => x.grades.Average())
+//    .FirstOrDefault();
+
+
+//Console.WriteLine($"Name - {StudentsListNew.Name}, average grades: {StudentsListNew.grades.Average()}");
+
+
+//class Student
+//{
+//    public string Name;
+//    public List<int> grades;
+
+//    public Student(string name)
+//    {
+//        Name = name;
+//        grades = new List<int>();
+//    }
+//}
+
+
+
+
+
+
+
+
 //Задача 17: Имеется коллекция сотрудников, каждый из которых имеет имя, должность и зарплату. Найти самую высокую зарплату для каждой должности.
+
+
+//var EmployeesList = new List<Employee>
+//{
+//    new Employee("Tom","manager", 27000),
+//    new Employee("Sam", "manager",32000),
+//    new Employee("Bob", "worker",20000),
+//    new Employee("Jon", "manager",22000),
+//    new Employee("Alex", "worker",18000),
+
+//};
+
+//var EmployeesListNew = EmployeesList.GroupBy(x => x.JobTitle)
+//    .Select(gr => new
+//    {
+//        JobTitle = gr.Key,
+//        MaxSalary = gr.Max(x => x.Salary)
+//    });
+
+//foreach (var emp in EmployeesListNew)
+//{
+//    Console.WriteLine($"JobTitle - {emp.JobTitle +",",-10} MaxSalary - {emp.MaxSalary} ");
+//}
+
+//class Employee
+//{
+//    public string Name;
+//    public string JobTitle;
+//    public int Salary;
+
+//    public Employee(string name, string title, int salary)
+//    {
+//        Name = name;
+//        JobTitle = title;
+//        Salary = salary;
+//    }
+//}
+
+
+
+
+
+
 
 //Задача 18: Имеется коллекция пользователей, каждый из которых имеет имя и список друзей. Найти всех пользователей, у которых есть друг с именем "Алексей".
 
+
+//var Persons = new List<Person>
+//{
+//    new Person("Tom")
+//    {
+//        friends = new List<string>{ "Алексей", "Sam","Anna","Alex","Polya","Maria","Dania"}
+//    },
+//    new Person("Ivan")
+//    {
+//        friends = new List<string>{"Polya","Maria", "Алексей" }
+//    },
+//    new Person("Den")
+//    {
+//        friends = new List<string>{"Alya","Alex","Polya","Maria","Dania","Nik"}
+//    },
+//    new Person("Bob")
+//    {
+//        friends = new List<string>{ "Алексей", "Anna","Alex"}
+//    },
+//    };
+
+//var PersonsListNew = Persons.Where(x => x.friends.Any(s => s == "Алексей")).ToList();
+
+//foreach (var pers in PersonsListNew)
+//{
+//    Console.WriteLine($"Name - {pers.Name}\nfriends:");
+//    foreach (var fr in pers.friends)
+//    {
+//        Console.Write(fr + ", ");
+//    }
+//    Console.WriteLine();
+//    Console.WriteLine("-------------------------------------");
+//}
+
+//class Person
+//{
+//    public string Name;
+//    public List<string> friends;
+
+//    public Person(string name)
+//    {
+//        Name = name;
+//        friends = new List<string>();
+//    }
+//}
+
+
+
+
+
+
+
+
+
+
+
 //Задача 19: Имеется коллекция транзакций, каждая из которых имеет сумму и дату. Найти транзакцию с наибольшей суммой за последний год.
 
+//var Transactions = new List<Transaction>
+//{
+//    new Transaction(52000,new DateTime(2024,07,11)),
+//    new Transaction(210000,new DateTime(2023,04,21)),
+//    new Transaction(60000,new DateTime(2024,07,01)),
+//    new Transaction(10000,new DateTime(2024,06,07)),
+//    new Transaction(120000,new DateTime(2024,07,14)),
+//    new Transaction(110000,new DateTime(2024,07,01))
+//};
+
+//DateTime nowDate = DateTime.Today;
+
+//DateTime lastYearDate = nowDate.AddYears(-1).Date.AddDays(nowDate.Day);
+
+
+//var transactionsNow = Transactions.Where(t => t.Date >= lastYearDate && t.Date <= nowDate).Max(t => t.Amount);
+
+
+//Console.WriteLine($"amount for the last year  - {transactionsNow}");
+
+//public class Transaction
+//{
+//    public double Amount;
+//    public DateTime Date;
+
+//    public Transaction(double sum, DateTime date)
+//    {
+//        Amount = sum;
+//        Date = date;
+//    }
+//}
+
+
+
+
+
+
+
 //Задача 20: Имеется коллекция студентов, каждый из которых имеет имя и список курсов. Найти все курсы и количество студентов, записанных на каждый курс.
+
+
+//var Students = new List<Student>
+//{
+//    new Student("Tom")
+//    {
+//        courses = new List<string>{"математика","укр.яз.","англ.яз.","физика","химия","биология","география"}
+//    },
+//    new Student("Ivan")
+//    {
+//        courses = new List<string>{ "англ.яз.", "химия", "математика" }
+//    },
+//    new Student("Den")
+//    {
+//        courses = new List<string>{ "география", "химия", "физика", "англ.яз.", "биология"}
+//    },
+//    new Student("Bob")
+//    {
+//        courses = new List<string>{ "англ.яз.", "Математика", "физика" }
+//    },
+//};
+
+//var StudentsListNew = Students
+//    .SelectMany(s => s.courses.Select(course => new 
+//    { 
+//        StudentName = s.Name,
+//        Course = course 
+//    }))
+//    .GroupBy(x => x.Course, StringComparer.OrdinalIgnoreCase)
+//    .Select(gr => new
+//    {
+//        Course = gr.Key,
+//        StudentCount = gr.Count()
+//    });
+
+
+
+//foreach (var stud in StudentsListNew)
+//{
+
+//    Console.WriteLine($"Name courses - {stud.Course + ",", -15}    StudentCount - {stud.StudentCount}");
+//}
+
+
+
+//class Student
+//{
+//    public string Name;
+//    public List<string> courses;
+
+//    public Student(string name)
+//    {
+//        Name = name;
+//        courses = new List<string>();
+//    }
+//}
